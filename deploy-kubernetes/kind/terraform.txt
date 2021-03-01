@@ -43467,3 +43467,61 @@ X-Kubernetes-Pf-Prioritylevel-Uid: c15cdab7-e59a-44b6-9d76-04cc22919144
 2021/03/01 15:47:26 [TRACE] statemgr.Filesystem: writing snapshot at terraform.tfstate
 2021/03/01 15:47:26 [TRACE] statemgr.Filesystem: removing lock metadata file .terraform.tfstate.lock.info
 2021/03/01 15:47:26 [TRACE] statemgr.Filesystem: unlocking terraform.tfstate using fcntl flock
+2021/03/01 17:57:03 [INFO] Terraform version: 0.14.6  
+2021/03/01 17:57:03 [INFO] Go runtime version: go1.15.6
+2021/03/01 17:57:03 [INFO] CLI args: []string{"/usr/bin/terraform", "show"}
+2021/03/01 17:57:03 [DEBUG] Attempting to open CLI config file: /home/pouellet/.terraformrc
+2021/03/01 17:57:03 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2021/03/01 17:57:03 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2021/03/01 17:57:03 [DEBUG] ignoring non-existing provider search directory /home/pouellet/.terraform.d/plugins
+2021/03/01 17:57:03 [DEBUG] ignoring non-existing provider search directory /home/pouellet/.local/share/terraform/plugins
+2021/03/01 17:57:03 [DEBUG] ignoring non-existing provider search directory /usr/share/ubuntu/terraform/plugins
+2021/03/01 17:57:03 [DEBUG] ignoring non-existing provider search directory /usr/local/share/terraform/plugins
+2021/03/01 17:57:03 [DEBUG] ignoring non-existing provider search directory /usr/share/terraform/plugins
+2021/03/01 17:57:03 [DEBUG] ignoring non-existing provider search directory /var/lib/snapd/desktop/terraform/plugins
+2021/03/01 17:57:03 [INFO] CLI command args: []string{"show"}
+2021/03/01 17:57:03 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2021/03/01 17:57:03 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2021/03/01 17:57:03 [DEBUG] New state was assigned lineage "8acb9800-c9ab-7495-9d99-18b7bda17ff2"
+2021/03/01 17:57:03 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2021/03/01 17:57:03 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2021/03/01 17:57:03 [TRACE] providercache.fillMetaCache: scanning directory .terraform/providers
+2021/03/01 17:57:03 [TRACE] getproviders.SearchLocalDirectory: .terraform/providers is a symlink to .terraform/providers
+2021/03/01 17:57:03 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/kubernetes v2.0.2 for linux_amd64 at .terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.0.2/linux_amd64
+2021/03/01 17:57:03 [TRACE] providercache.fillMetaCache: including .terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.0.2/linux_amd64 as a candidate package for registry.terraform.io/hashicorp/kubernetes 2.0.2
+2021/03/01 17:57:03 [DEBUG] checking for provisioner in "."
+2021/03/01 17:57:03 [DEBUG] checking for provisioner in "/usr/bin"
+2021/03/01 17:57:03 [INFO] Failed to read plugin lock file .terraform/plugins/linux_amd64/lock.json: open .terraform/plugins/linux_amd64/lock.json: no such file or directory
+2021/03/01 17:57:03 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2021/03/01 17:57:03 [TRACE] backend/local: requesting state manager for workspace "default"
+2021/03/01 17:57:03 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2021/03/01 17:57:03 [TRACE] backend/local: requesting state lock for workspace "default"
+2021/03/01 17:57:03 [TRACE] backend/local: reading remote state for workspace "default"
+2021/03/01 17:57:03 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2021/03/01 17:57:03 [TRACE] statemgr.Filesystem: read snapshot with lineage "fd198571-b016-8579-5408-6afb151940af" serial 16
+2021/03/01 17:57:03 [DEBUG] backend/local: skipping refresh of managed resources
+2021/03/01 17:57:03 [TRACE] backend/local: retrieving local state snapshot for workspace "default"
+2021/03/01 17:57:03 [TRACE] backend/local: building context for current working directory
+2021/03/01 17:57:03 [TRACE] terraform.NewContext: starting
+2021/03/01 17:57:03 [TRACE] terraform.NewContext: loading provider schemas
+2021/03/01 17:57:03 [TRACE] LoadSchemas: retrieving schema for provider type "registry.terraform.io/hashicorp/kubernetes"
+2021-03-01T17:57:03.758-0500 [INFO]  plugin: configuring client automatic mTLS
+2021-03-01T17:57:03.803-0500 [DEBUG] plugin: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.0.2/linux_amd64/terraform-provider-kubernetes_v2.0.2_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.0.2/linux_amd64/terraform-provider-kubernetes_v2.0.2_x5]
+2021-03-01T17:57:03.804-0500 [DEBUG] plugin: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.0.2/linux_amd64/terraform-provider-kubernetes_v2.0.2_x5 pid=186154
+2021-03-01T17:57:03.804-0500 [DEBUG] plugin: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.0.2/linux_amd64/terraform-provider-kubernetes_v2.0.2_x5
+2021-03-01T17:57:03.863-0500 [INFO]  plugin.terraform-provider-kubernetes_v2.0.2_x5: configuring server automatic mTLS: timestamp=2021-03-01T17:57:03.863-0500
+2021-03-01T17:57:03.900-0500 [DEBUG] plugin.terraform-provider-kubernetes_v2.0.2_x5: plugin address: network=unix address=/tmp/plugin381533154 timestamp=2021-03-01T17:57:03.900-0500
+2021-03-01T17:57:03.900-0500 [DEBUG] plugin: using plugin: version=5
+2021/03/01 17:57:03 [TRACE] GRPCProvider: GetSchema
+2021-03-01T17:57:03.989-0500 [TRACE] plugin.stdio: waiting for stdio data
+2021/03/01 17:57:04 [TRACE] GRPCProvider: Close
+2021-03-01T17:57:04.035-0500 [WARN]  plugin.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-03-01T17:57:04.037-0500 [DEBUG] plugin: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.0.2/linux_amd64/terraform-provider-kubernetes_v2.0.2_x5 pid=186154
+2021-03-01T17:57:04.037-0500 [DEBUG] plugin: plugin exited
+2021/03/01 17:57:04 [TRACE] terraform.NewContext: complete
+2021/03/01 17:57:04 [TRACE] backend/local: finished building terraform.Context
+2021/03/01 17:57:04 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2021/03/01 17:57:04 [TRACE] statemgr.Filesystem: read snapshot with lineage "fd198571-b016-8579-5408-6afb151940af" serial 16
