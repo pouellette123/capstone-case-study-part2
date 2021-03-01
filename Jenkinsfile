@@ -59,12 +59,12 @@ pipeline {
             steps {
                 // Check if kind, option 1, or AWS, option 2 and move to appropriate directory
                 // Initialize Terraform
-                sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "1"); then cd $APP_HOME/deploy-kubernetes/kind;fi'
+                sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "1"); then cd $APP_HOME/deploy-kubernetes/kind; terraform init; terraform apply -auto-approve;fi'
                 //sh 'cd $APP_HOME/deploy-kubernetes/kind'
                 //sh 'if (cat provision-kubernetes-cluster/config-option.txt | grep 2); then cd deploy-kubernetes/aws;fi'
-                sh 'terraform init'
+                //sh 'terraform init'
                 // Apply Terraform
-                sh 'terraform apply -auto-approve'
+                //sh 'terraform apply -auto-approve'
                 sh 'sudo -u pouellet kubectl set image deployment/scalable-flask-app flask-capp-c2=${DOCKER_HUB_REPO}:${BUILD_NUMBER}'
             }
         }
