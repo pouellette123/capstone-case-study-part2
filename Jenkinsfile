@@ -60,6 +60,7 @@ pipeline {
                 // Check if kind, option 1, or AWS, option 2 and move to appropriate directory
                 // Initialize Terraform
                 sh 'if (echo $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "1"); then cd deploy-kubernetes/kind;fi'
+                sh 'cd deploy-kubernetes/kind'
                 //sh 'if (echo provision-kubernetes-cluster/config-option.txt | grep 2); then cd deploy-kubernetes/aws;fi'
                 sh 'terraform init'
                 // Apply Terraform
