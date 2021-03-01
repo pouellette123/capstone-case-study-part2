@@ -12,20 +12,20 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
-    stages {
-        stage ('Git Checkout') {
-            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/pouellette123/capstone-case-study-part2']]])
-        } 
-        //stage('Clean Up') {
-            //steps {
-                //sh 'rm -rf $APP_HOME'
-            //}
-        //}
-        //stage('Git Clone Repository') {
-            //steps {
-                //sh 'git clone https://github.com/pouellette123/$APP_REPO_NAME'
-            //}
-        //}
+    //stages {
+        //stage ('Git Checkout') {
+            //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/pouellette123/capstone-case-study-part2']]])
+        //} 
+        stage('Clean Up') {
+            steps {
+                sh 'rm -rf $APP_HOME'
+            }
+        }
+        stage('Git Clone Repository') {
+            steps {
+                sh 'git clone https://github.com/pouellette123/$APP_REPO_NAME'
+            }
+        }
         stage('Build the Docker Image') {
             steps {
                 sh 'docker image build -t $DOCKER_HUB_REPO:latest $APP_HOME/flask-app/'
