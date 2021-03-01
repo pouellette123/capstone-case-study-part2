@@ -65,7 +65,7 @@ pipeline {
                 //sh 'terraform init'
                 // Apply Terraform
                 //sh 'terraform apply -auto-approve'
-                sh 'kubectl set image deployment/flask-app-deployment flask-capp-c2-cont=${DOCKER_HUP_REPO}:${BUILD_NUMBER}'
+                sh 'kubectl set image deployment/flask-app-deployment flask-app-c2=${DOCKER_HUP_REPO}:${BUILD_NUMBER}'
             }
         }
     }
