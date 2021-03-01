@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         APP_REPO_NAME = "capstone-case-study-part2"
-        APP_HOME = "$JENKINS_HOME/workspace/capstone-part2/capstone-case-study-part2/$APP_REPO_NAME"
+        APP_HOME = "$JENKINS_HOME/workspace/capstone-part2/APP_REPO_NAME"
         DOCKER_HUB_REPO = "pouellette123/flask-app-c2"
         CONTAINER_NAME = "flask-app-c2-cont"
     }
