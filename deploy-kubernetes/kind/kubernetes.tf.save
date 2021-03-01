@@ -32,7 +32,7 @@ resource "kubernetes_deployment" "flask" {
   metadata {
     name = "flask-app-deployment"
     labels = {
-      App = "ScalableFlaskApp"
+      App = "ScalableFlaskExample"
     }
   }
 
@@ -40,18 +40,18 @@ resource "kubernetes_deployment" "flask" {
     replicas = 3
     selector {
       match_labels = {
-        App = "ScalableFlaskApp"
+        App = "ScalableFlaskExample"
       }
     }
     template {
       metadata {
         labels = {
-          App = "ScalableFlaskApp"
+          App = "ScalableFlaskExample"
         }
       }
       spec {
         container {
-          image = "pouellette123/terrkubjenk:latest"
+          image = "pouellette123/capstone-part2:latest"
           name  = "flask-app-c2"
 
           port {

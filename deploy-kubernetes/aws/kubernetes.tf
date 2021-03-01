@@ -30,7 +30,7 @@ resource "kubernetes_service" "flask" {
 
 resource "kubernetes_deployment" "flask" {
   metadata {
-    name = "scalable-flask-app"
+    name = "flask-app-deployment"
     labels = {
       App = "ScalableFlaskApp"
     }
