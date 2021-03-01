@@ -57,7 +57,10 @@ pipeline {
         }
         stage('Deploy with Terraform to Kubernetes Cluster') {
             steps {
+                // Check if kind, option 1, or AWS, option 2 and move to appropriate directory
                 // Initialize Terraform
+                sh 'if (echo provision-kubernetes-cluster/config-option.txt | grep 1); then cd deploy-kubernetes/kind;fi'
+                //sh 'if (echo provision-kubernetes-cluster/config-option.txt | grep 2); then cd deploy-kubernetes/aws;fi'
                 sh 'terraform init'
                 // Apply Terraform
                 sh 'terraform apply -auto-approve'
