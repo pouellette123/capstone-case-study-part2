@@ -5,7 +5,7 @@ FROM python:3
 WORKDIR /usr/src/app
 
 # copy all the files to the container
-COPY ./flask-app/* /usr/src/app/
+COPY . /usr/src/app/
 
 # install dependencies
 RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
