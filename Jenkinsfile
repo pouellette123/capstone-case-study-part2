@@ -4,8 +4,8 @@ pipeline {
         pollSCM '* * * * *'
     }
     environment {
-        APP_NAME = "capstone-case-study-part2"
-        APP_HOME = "$JENKINS_HOME/workspace/capstone-case-study-part2/$APP_NAME"
+        APP_REPO_NAME = "capstone-case-study-part2"
+        APP_HOME = "$JENKINS_HOME/workspace/capstone-part2/capstone-case-study-part2/$APP_REPO_NAME"
         DOCKER_HUB_REPO = "pouellette123/flask-app-c2"
         CONTAINER_NAME = "flask-app-c2-cont"
     }
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Git Clone Repository') {
             steps {
-                sh 'git clone https://github.com/pouellette123/$APP_NAME'
+                sh 'git clone https://github.com/pouellette123/$APP_REPO_NAME'
             }
         }
         stage('Build the Docker Image') {

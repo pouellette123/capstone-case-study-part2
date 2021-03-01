@@ -8,11 +8,11 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app/
 
 # install dependencies
-RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
+RUN pip install --no-cache-dir -r /usr/src/app/flask-app/requirements.txt
 
 # tell the port number the container should expose
 EXPOSE 8079
 
 # run the command
-CMD ["python", "/usr/src/app/web.py"]
+CMD ["python", "/usr/src/app/flask-app/web.py"]
 
