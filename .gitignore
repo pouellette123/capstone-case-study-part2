@@ -18,25 +18,17 @@
 
 ### Terraform ###
 # Local .terraform directories
-./provision-kubernetes-cluster/aws/.terraform/*
-./deploy-kubernetes/aws/.terraform/*
-./deploy-kubernetes/kind/.terraform/*
+.terraform
 
 # .tfstate files
-./provision-kubernetes-cluster/aws/*.tfstate.*
-./provision-kubernetes-cluster/aws/*.tfstate
-./deploy-kubernetes/aws/*.tfstate.*
-./deploy-kubernetes/aws/*.tfstate
-./deploy-kubernetes/kind/*.tfstate.*
-./deploy-kubernetes/kind/*.tfstate
+*.tfstate.*
+*.tfstate
 
 # credentials for AWS
-./provision-kubernetes-cluster/aws/credentials
+credentials
 
 # Crash log files
-./provision-kubernetes-cluster/aws/crash.log
-./deploy-kubernetes/aws/crash.log
-./deploy-kubernetes/kind/crash.log
+crash.log
 
 # Ignore any .tfvars files that are generated automatically for each Terraform run. Most
 # .tfvars files are managed as part of configuration and so should be included in
@@ -46,18 +38,6 @@
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
-./provision-kubernetes-cluster/aws/override.tf
-./deploy-kubernetes/aws/override.tf
-./deploy-kubernetes/kind/override.tf
-./provision-kubernetes-cluster/aws/override.tf.json
-./deploy-kubernetes/aws/override.tf.json
-./deploy-kubernetes/kind/override.tf.json
-./provision-kubernetes-cluster/aws/*_override.tf
-./deploy-kubernetes/aws/*_override.tf
-./deploy-kubernetes/kind/*_override.tf
-./provision-kubernetes-cluster/aws/*_override.tf.json
-./deploy-kubernetes/aws/*_override.tf.json
-./deploy-kubernetes/kind/*_override.tf.json
 override.tf
 override.tf.json
 *_override.tf
