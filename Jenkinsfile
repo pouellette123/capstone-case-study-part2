@@ -12,7 +12,7 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
-    //stages {
+    stages {
         //stage ('Git Checkout') {
             //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/pouellette123/capstone-case-study-part2']]])
         //} 
