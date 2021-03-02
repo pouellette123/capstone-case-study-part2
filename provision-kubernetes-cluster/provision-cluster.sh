@@ -13,6 +13,7 @@ elif [ $num -eq 2 ]; then
    cd ./aws
    terraform init
    terraform apply -auto-approve
+   aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
    CLUSTER_RANDOM=`terraform output | grep "cluster: " | cut -f6 -d ' ' | cut -f3 -d '-'`
    CLUSTER_CONTEXT=`kubectl config get-contexts | grep $CLUSTER_RANDOM | cut -f13 -d ' '`
    cd ..
