@@ -13,7 +13,7 @@ provider "kubernetes" {
 
 resource "kubernetes_service" "flask" {
   metadata {
-    name = "flask-app"
+    name = "flask-app-service"
   }
   spec {
     selector = {
