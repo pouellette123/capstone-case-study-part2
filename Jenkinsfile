@@ -16,14 +16,16 @@ pipeline {
         //stage ('Git Checkout') {
             //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/pouellette123/capstone-case-study-part2']]])
         //} 
-        stage('Clean Up') {
+        stage('Clean Up and use previous terraform state files') {
             steps {
+                sh 'if [ -f "$APP_HOME" ] then; mv $APP_HOME $APP_HOME/clone;fi'
                 sh 'rm -rf $APP_HOME'
             }
         }
         stage('Git Clone Repository') {
             steps {
                 sh 'git clone https://github.com/pouellette123/$APP_REPO_NAME'
+                sh 'if [ -f "$APP_HOME/clone" ] then; cp -rn $APP_HOME/clone/* $APP_HOME/*;fi'
             }
         }
         stage('Build the Docker Image') {
