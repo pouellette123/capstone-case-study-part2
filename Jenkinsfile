@@ -59,7 +59,7 @@ pipeline {
                 sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "2"); then cd $APP_HOME/deploy-kubernetes/aws; terraform init; terraform apply -auto-approve;fi'
                 // update image
                 sh 'sleep 20'
-                sh 'kubectl set image deployment/flask-app-deployment flask-app-c2=${DOCKER_HUP_REPO}:${BUILD_NUMBER}'
+                sh 'kubectl set image deployment/flask-app-deployment flask-app-c2=$DOCKER_HUP_REPO:$BUILD_NUMBER'
             }
         }
     }
