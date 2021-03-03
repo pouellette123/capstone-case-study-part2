@@ -63,7 +63,7 @@ pipeline {
             steps {
                 // Check if kind, option 1, or AWS, option 2 and move to appropriate directory
                 // Initialize Terraform and redeploy app and/or service changes
-                sh 'cd $BASE_HOME; cp -rn "$APP_REPO_NAME".clone/* $APP_REPO_NAME/'
+                sh 'if (ls "$APP_REPO_NAME".clone); then cd $BASE_HOME; cp -rn "$APP_REPO_NAME".clone/* $APP_REPO_NAME/;fi'
                 sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "1"); then cd $APP_HOME/deploy-kubernetes/kind; terraform init; terraform apply -auto-approve;fi'
                 sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "2"); then cd $APP_HOME/deploy-kubernetes/aws; terraform init; terraform apply -auto-approve;fi'
                 // update image
