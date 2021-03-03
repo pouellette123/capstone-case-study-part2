@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
         APP_REPO_NAME = "capstone-case-study-part2"
+        BASE_HOME = "$JENKINS_HOME/workspace/capstone-part2/"
         APP_HOME = "$JENKINS_HOME/workspace/capstone-part2/$APP_REPO_NAME"
         DOCKER_HUB_REPO = "pouellette123/flask-app-c2"
         CONTAINER_NAME = "flask-app-c2-cont"
@@ -18,14 +19,14 @@ pipeline {
         //} 
         stage('Clean Up and use previous terraform state files') {
             steps {
-                sh 'if [ -f "$APP_HOME" ]; then mv $APP_HOME $JENKINS_HOME/clone/;fi'
+                sh 'if [ -f "$APP_HOME" ]; then cd $BASE_HOME; mv $APP_REPO_NAME $APP_REPO_NAME.clone;fi'
                 sh 'rm -rf $APP_HOME'
             }
         }
         stage('Git Clone Repository') {
             steps {
                 sh 'git clone https://github.com/pouellette123/$APP_REPO_NAME'
-                sh 'if [ -f "$JENKINS_HOME/clone" ]; then cp -rn $JENKINS_HOME/clone/* $APP_HOME/;fi' }
+                sh 'if [ -f "$APP_HOME".clone ]; then cd $BASE_HOME; cp -rn $APP_REPO_NAME.clone/* $APP_REPO_NAME;fi' }
         }
         stage('Build the Docker Image') {
             steps {
