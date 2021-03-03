@@ -14,9 +14,6 @@ elif [ $num -eq 2 ]; then
    terraform init
    terraform apply -auto-approve
    aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
-   sudo cp -rf credentials /var/lib/jenkins/.aws/credentials
-   sudo chown jenkins /var/lib/jenkins/.aws/credentials
-   sudo chgrp jenkins /var/lib/jenkins/.aws/credentials
    CLUSTER_RANDOM=`terraform output | grep "cluster: " | cut -f6 -d ' ' | cut -f2 -d '-'`
    CLUSTER_CONTEXT=`kubectl config get-contexts | grep $CLUSTER_RANDOM | cut -f13 -d ' '`
    cd ..
