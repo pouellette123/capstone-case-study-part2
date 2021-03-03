@@ -63,10 +63,10 @@ pipeline {
                 // Check if kind, option 1, or AWS, option 2 and move to appropriate directory
                 // Initialize Terraform and redeploy app and/or service changes
                 sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "1"); then cd $APP_HOME/deploy-kubernetes/kind; terraform init; terraform apply -auto-approve;fi'
-                sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "2"); then cd $APP_HOME/deploy-kubernetes/aws; sudo -u pouellet terraform init; sudo -u pouellet terraform apply -auto-approve;fi'
+                sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "2"); then cd $APP_HOME/deploy-kubernetes/aws; terraform init; terraform apply -auto-approve;fi'
                 // update image
                 sh 'sleep 20'
-                sh 'sudo -u pouellet kubectl set image deployment/flask-app-deployment flask-app-c2=${DOCKER_HUP_REPO}:${BUILD_NUMBER}'
+                sh 'kubectl set image deployment/flask-app-deployment flask-app-c2=${DOCKER_HUP_REPO}:${BUILD_NUMBER}'
             }
         }
     }
