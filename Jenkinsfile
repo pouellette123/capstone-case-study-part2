@@ -42,7 +42,8 @@ pipeline {
         }
         stage('Test the Container') {
             steps {
-                // test with a curl
+                // test with a curl wait a second
+                sh 'sleep 1'
                 sh 'curl -s --head  --request GET  10.0.0.143:8079 | grep 200'
                 // stop the container, don't want port confilct 
                 sh 'if (docker ps | grep $CONTAINER_NAME); then docker stop $CONTAINER_NAME;fi'
