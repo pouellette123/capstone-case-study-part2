@@ -20,7 +20,6 @@ pipeline {
         stage('Clean Up and use previous terraform state files') {
             steps {
                 sh 'if [ -f "$APP_HOME" ]; then cd $BASE_HOME; mv $APP_REPO_NAME $APP_REPO_NAME.clone;fi'
-                sh 'rm -rf $APP_HOME'
             }
         }
         stage('Git Clone Repository') {
