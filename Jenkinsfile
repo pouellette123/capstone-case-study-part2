@@ -61,13 +61,10 @@ pipeline {
         stage('Deploy with Terraform to Kubernetes Cluster') {
             steps {
                 // Check if kind, option 1, or AWS, option 2 and move to appropriate directory
-                // Initialize Terraform
+                // Initialize Terraform and redeploy app and/or service changes
                 sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "1"); then cd $APP_HOME/deploy-kubernetes/kind; terraform init; terraform apply -auto-approve;fi'
-                //sh 'cd $APP_HOME/deploy-kubernetes/kind'
-                //sh 'if (cat provision-kubernetes-cluster/config-option.txt | grep 2); then cd deploy-kubernetes/aws;fi'
-                //sh 'terraform init'
-                // Apply Terraform
-                //sh 'terraform apply -auto-approve'
+                sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "2"); then cd $APP_HOME/deploy-kubernetes/aws; terraform init; terraform apply -auto-approve;fi'
+                // update image
                 sh 'kubectl set image deployment/flask-app-deployment flask-app-c2=${DOCKER_HUP_REPO}:${BUILD_NUMBER}'
             }
         }

@@ -5,7 +5,7 @@ variable "region" {
 
 provider "aws" {
   region = "us-east-1"
-  shared_credentials_file = "/home/pouellet/steve_dev/capstone-case-study-part2/provision-kubernetes-cluster/aws/credentials
+  shared_credentials_file = "/home/pouellet/steve_dev/capstone-case-study-part2/provision-kubernetes-cluster/aws/credentials"
 }
 
 data "aws_availability_zones" "available" {}

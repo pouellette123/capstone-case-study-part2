@@ -1,0 +1,29 @@
+2021/03/03 11:54:24 [INFO] Terraform version: 0.14.6  
+2021/03/03 11:54:24 [INFO] Go runtime version: go1.15.6
+2021/03/03 11:54:24 [INFO] CLI args: []string{"/usr/bin/terraform", "output"}
+2021/03/03 11:54:24 [DEBUG] Attempting to open CLI config file: /home/pouellet/.terraformrc
+2021/03/03 11:54:24 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2021/03/03 11:54:24 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2021/03/03 11:54:24 [DEBUG] ignoring non-existing provider search directory /home/pouellet/.terraform.d/plugins
+2021/03/03 11:54:24 [DEBUG] ignoring non-existing provider search directory /home/pouellet/.local/share/terraform/plugins
+2021/03/03 11:54:24 [DEBUG] ignoring non-existing provider search directory /usr/share/ubuntu/terraform/plugins
+2021/03/03 11:54:24 [DEBUG] ignoring non-existing provider search directory /usr/local/share/terraform/plugins
+2021/03/03 11:54:24 [DEBUG] ignoring non-existing provider search directory /usr/share/terraform/plugins
+2021/03/03 11:54:24 [DEBUG] ignoring non-existing provider search directory /var/lib/snapd/desktop/terraform/plugins
+2021/03/03 11:54:24 [INFO] CLI command args: []string{"output"}
+2021/03/03 11:54:24 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2021/03/03 11:54:24 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2021/03/03 11:54:24 [DEBUG] New state was assigned lineage "e92db6d9-c5f0-6468-9adc-d2647062e54a"
+2021/03/03 11:54:24 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2021/03/03 11:54:24 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2021/03/03 11:54:24 [DEBUG] checking for provisioner in "."
+2021/03/03 11:54:24 [DEBUG] checking for provisioner in "/usr/bin"
+2021/03/03 11:54:24 [INFO] Failed to read plugin lock file .terraform/plugins/linux_amd64/lock.json: open .terraform/plugins/linux_amd64/lock.json: no such file or directory
+2021/03/03 11:54:24 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2021/03/03 11:54:24 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2021/03/03 11:54:24 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2021/03/03 11:54:24 [TRACE] statemgr.Filesystem: snapshot file has nil snapshot, but that's okay
+2021/03/03 11:54:24 [TRACE] statemgr.Filesystem: read nil snapshot
