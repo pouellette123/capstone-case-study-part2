@@ -57,7 +57,7 @@ pipeline {
                 // Initialize Terraform and redeploy app and/or service changes
                 sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "1"); then cd $APP_HOME/deploy-kubernetes/kind; terraform init; terraform apply -auto-approve;fi'
                 sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "2"); then cd $APP_HOME/deploy-kubernetes/aws; terraform init; terraform apply -auto-approve;fi'
-                // update image
+                // update image on Kubernetes
                 sh 'sleep 20'
                 sh 'kubectl set image deployment/flask-app-deployment flask-app-c2=${DOCKER_HUB_REPO}:${BUILD_NUMBER}'
             }
