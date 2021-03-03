@@ -69,7 +69,7 @@ pipeline {
                 // update image
                 sh 'sleep 20'
                 sh 'kubectl set image deployment/flask-app-deployment flask-app-c2=${DOCKER_HUP_REPO}:${BUILD_NUMBER}'
-                sh 'cd $BASE_HOME; mv $APP_REPO_NAME "$APP_REPO_NAME".clone'
+                sh 'cd $BASE_HOME; if(ls "$APP_REPO_NAME".cone);then rm -rf "$APP_REPO_NAME".cone;fi;mv $APP_REPO_NAME "$APP_REPO_NAME".clone'
 
             }
         }
