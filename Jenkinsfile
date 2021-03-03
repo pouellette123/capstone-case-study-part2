@@ -19,13 +19,13 @@ pipeline {
         //} 
         stage('Clean Up and use previous terraform state files') {
             steps {
-                sh 'if (-f "$APP_HOME"); then cd $BASE_HOME; mv $APP_REPO_NAME "$APP_REPO_NAME".clone;fi'
+                sh 'if (file $APP_HOME); then cd $BASE_HOME; mv $APP_REPO_NAME "$APP_REPO_NAME".clone;fi'
             }
         }
         stage('Git Clone Repository') {
             steps {
                 sh 'git clone https://github.com/pouellette123/$APP_REPO_NAME'
-                sh 'if (-f "$APP_HOME".clone); then cd $BASE_HOME; cp -rn "$APP_REPO_NAME".clone/* $APP_REPO_NAME;fi' }
+                sh 'if (file "$APP_HOME".clone); then cd $BASE_HOME; cp -rn "$APP_REPO_NAME".clone/* $APP_REPO_NAME;fi' }
         }
         stage('Build the Docker Image') {
             steps {
