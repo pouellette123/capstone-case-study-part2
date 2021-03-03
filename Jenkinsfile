@@ -24,8 +24,6 @@ pipeline {
         stage('Git Clone Repository') {
             steps {
                 sh 'git clone https://github.com/pouellette123/$APP_REPO_NAME'
-                // copy credentials used for aws IaC provision
-                sh 'cp -rf $APP_HOME/provision-kubernetes-cluster/aws/credentials $JENKINS_HOME/.aws/credentials'
             }
         }
         stage('Build the Docker Image') {
