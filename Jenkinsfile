@@ -25,7 +25,7 @@ pipeline {
         stage('Git Clone Repository') {
             steps {
                 sh 'git clone https://github.com/pouellette123/$APP_REPO_NAME'
-                sh 'if (file "$APP_HOME".clone); then cd $BASE_HOME; cp -rn "$APP_REPO_NAME".clone/* $APP_REPO_NAME;fi' }
+                sh 'if (file "$APP_HOME".clone); then cd $BASE_HOME; cp -rn "$APP_REPO_NAME".clone/* $APP_REPO_NAME/;fi' }
         }
         stage('Build the Docker Image') {
             steps {
