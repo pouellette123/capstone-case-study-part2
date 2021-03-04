@@ -1,0 +1,49 @@
+# version of Kubernetes API to create the following object
+apiVersion: apps/v1
+# what kind of object
+kind: Deployment
+# data to describe the object, name, labels, ...
+metadata:
+  name: capstone-mk8-deployment
+  labels:
+    app: capstone
+# specs of the object
+spec:
+# how many copies/replicas running
+  replicas: 3
+# selector used to label a set of objects
+  selector:
+    matchLabels:
+      app: capstone
+# template is a definition of the object to be replicated
+  template:
+# metadata to describe the object
+    metadata:
+      labels:
+        app: capstone
+# object specifications, name of container, docker image, port exposed
+    spec:
+      containers:
+      - name: capstone-container
+        image: pouellette123/flask-app-c2
+        ports:
+        - containerPort: 8079
+---
+apiVersion: v1
+# define a network service/object
+kind: Service
+# data to describe/label it
+metadata:
+  name: capstone-service
+# specifications of the service
+spec:
+# type of network/service, nodeport, can also have cluster IP, loadbalance, externalname
+  type: NodePort
+  selector:
+    app: capstone
+ # maps the port from inside the cluster, 8079, to outside world, 32001 using TCP 
+  ports:
+  - protocol: TCP
+    port: 8079
+    targetPort: 8079
+    nodePort: 32001

@@ -28,16 +28,15 @@ pipeline {
         stage('Run the Container') {
             steps {
                 sh 'if (docker ps -a | grep $CONTAINER_NAME); then docker stop $CONTAINER_NAME; docker rm $CONTAINER_NAME;fi'
-                //sh 'if (docker image ls | grep $CONTAINER_NAME); then docker rm $CONTAINER_NAME;fi'
                 sh 'docker run --name $CONTAINER_NAME -d -p 8079:8079 $DOCKER_HUB_REPO:$BUILD_NUMBER'
             }
         }
         stage('Test the Container') {
             steps {
-                // test with a curl wait a second
+                // test with a curl wait a second, every once in a while the curl would fail without sleep
                 sh 'sleep 1'
                 sh 'curl -s --head  --request GET  10.0.0.143:8079 | grep 200'
-                // stop the container, don't want port confilct 
+                // stop the container, don't want a container name conflict
                 sh 'if (docker ps | grep $CONTAINER_NAME); then docker stop $CONTAINER_NAME;fi'
             }
         }
@@ -53,11 +52,11 @@ pipeline {
         }
         stage('Deploy with Terraform to Kubernetes Cluster') {
             steps {
-                // Check if kind, option 1, or AWS, option 2 and move to appropriate directory
+                // Check if kind, option 1, or AWS, option 2 and move to appropriate directory before deploying
                 // Initialize Terraform and redeploy app and/or service changes
                 sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "1"); then cd $APP_HOME/deploy-kubernetes/kind; terraform init; terraform apply -auto-approve;fi'
                 sh 'if (cat $APP_HOME/provision-kubernetes-cluster/config-option.txt | grep "2"); then cd $APP_HOME/deploy-kubernetes/aws; terraform init; terraform apply -auto-approve;fi'
-                // update image on Kubernetes
+                // update image on Kubernetes, sleep 20 seconds since sometime on AWS the deployment wasn't read for the image
                 sh 'sleep 20'
                 sh 'kubectl set image deployment/flask-app-deployment flask-app-c2=${DOCKER_HUB_REPO}:${BUILD_NUMBER}'
             }
