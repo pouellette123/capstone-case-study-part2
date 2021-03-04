@@ -32,7 +32,8 @@ This Project uses a flask application, it builds an image to implement a CI/CD p
 
 - [install kind](https://kind.sigs.k8s.io/docs/user/quick-start/) (kind option only) 
 - on AWS create an IAM user, download the .CSV file and place the credentials in the file ~/.aws/credentials on the host you plan on provisioning the eks cluster from (AWS option only)
-- a configured AWS CLI (AWS option only)- a DockerHub account
+- a configured AWS CLI (AWS option only)
+- a DockerHub account
 - kubectl
 - jenkins with DockerHub and GitHub credentials
 - docker
