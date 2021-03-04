@@ -1,6 +1,15 @@
 # Capstone Case Study Part 2
 
-### This Project uses a flask application, it builds an image to implement a CI/CD pipeline on a local server using kind and on AWS EKS, both using IaC.
+## Business Goals
+
+This Project uses a flask application, it builds an image to implement a CI/CD pipeline on a local server using kind and on AWS EKS, both using IaC. 
+
+- Terraform is used as an IaC tool to handle provisioning the infrastructrure and application deployment separately. Kind's cluster build is automated but not with Terraform.
+- A Docker conatiner is used to build and image that contains the application and it's dependencies. To enahnce security and create independence as to where it is executed/implemented.
+- The IaC provisioning is done by manually by running a script and selecting the desired platform, a local computer or AWS.
+- The application and it's services are deployed automatically triggered by a github push.
+- A Jenkins pipeline automates the build, testing and deployment to either a local Kubernetes cluster or AWS eks. (A future enhancement could allow for the deployment of the application to both environments.)
+
 
 [project description](https://docs.google.com/document/d/1J5rvYyM-EjEq1GFcrTuVrwn6q1INIp6U6J1MS3OhOJM/edit)
 
