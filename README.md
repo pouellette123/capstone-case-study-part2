@@ -117,4 +117,3 @@ Two tools used to generate activity in the pod:<br>
 - To access AWS eks from the public end, you have to implement a service with type LoadBalancer. ClusterIP and NodePort won't work.
 - Be careful when running with multiple Kubernetes contexts and/or users when it comes to credentials for AWS and Kubernetes.
 - metricbeats Kubernetes module difficult to implement.
--  
